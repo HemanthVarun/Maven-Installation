@@ -1,0 +1,28 @@
+# Maven-Commands
+# prerequisites: Java
+
+cd /opt/      # installing the package in this path.
+
+wget https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/amazon-linux-install.html     
+
+sudo yum install java-17-amazon-corretto-headless                                            # Run this command to install Java
+
+wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.zip        # Command to install Maven package
+
+unzip apache-maven-3.8.8-bin.zip                                                             # To unzip the Maven files
+
+mv apache-maven-3.8.8 MAVEN                                                                  # Renaming the unzip to required name
+
+cd /etc/profile.d/                                                                           # Location where we set the home directory for Maven
+
+vi maven.sh
+	export M2_HOME=/opt/MAVEN
+	export PATH=${M2_HOME}/bin:${PATH}                                                   # Write this file to set the home directory for Maven
+
+chmod 777 maven.sh                                                                           # All permissions
+
+source maven.sh
+
+mvn --version
+
+mvn archetype:generate                                                                       # To create the architecture before building the source code
